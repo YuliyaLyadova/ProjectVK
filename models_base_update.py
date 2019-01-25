@@ -1,14 +1,7 @@
-import sqlalchemy as sa
-from sqlalchemy import Column
-from sqlalchemy import String, Integer, Date
-
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-import json
 import os
-import pymysql
 
 
 #подключаемся к созданной базе
@@ -25,7 +18,7 @@ def save_new_info():
     json_group_info=open(new_info).read()
     new_entries=[]
     for entry in json_group_info:
-        new_entry=VKGroupBase(group_id=new_info[int('id')+1]['id'],
+        new_entry = VKGroupBase(group_id=new_info[int('id')+1]['id'],
                               group_name=new_info[int('id')+1]['group_name'],
                               deactivated=new_info[int('id')+1]['deactivated'],
                               group_type=new_info[int('id')+1]['group_type'],
